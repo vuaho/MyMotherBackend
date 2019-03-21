@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose');
 
-const URI = "mongodb://cluster0-mrytd.mongodb.net/test --username mymother1";
+const URI = "mongodb://localhost:27017/mymother";
 mongoose.connect(URI)
 .then(() => {
    console.log("Connected to database!");
