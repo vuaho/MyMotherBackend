@@ -27,4 +27,9 @@ Route::post('user/{id}','UserController@editUser');
 
 Route::post('book','RideController@book');
 
+Route::get('rides/{id}', 'RideController@listRideOfUser');
+
+Route::get('ride/{id}', 'RideController@getRide');
+
+Route::post('updateLocation','RideController@updateLocation');
 

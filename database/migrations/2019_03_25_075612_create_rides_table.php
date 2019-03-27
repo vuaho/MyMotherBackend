@@ -16,6 +16,7 @@ class CreateRidesTable extends Migration
         Schema::create('rides', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('kid_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('rider_id');
             $table->double('lat_start');
             $table->double('long_start');
@@ -31,8 +32,11 @@ class CreateRidesTable extends Migration
             $table->double('total_time')->nullable();
             $table->string('note')->nullable;
             $table->string('password');
+            $table->string('location_channel');
+            $table->boolean('notified')->default(false);
             $table->foreign('kid_id')->references('id')->on('kids');
             $table->foreign('rider_id')->references('id')->on('riders');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

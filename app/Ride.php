@@ -13,4 +13,13 @@ class Ride extends Model
     public function kid() {
         return $this->belongsTo('App\Kid');
     }
+
+    public function reviews() {
+        return $this->hasMany('App\Review');
+    }
+
+    public function locationTrackers() {
+        return $this->hasMany('App\LocationTracker');
+    }
+
 }
