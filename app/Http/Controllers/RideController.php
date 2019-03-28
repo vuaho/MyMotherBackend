@@ -8,6 +8,7 @@ use App\Ride;
 use App\LocationTracker;
 use Pusher\Laravel\Facades\Pusher;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Crypt;
 
 class RideController extends Controller
 {
@@ -18,7 +19,7 @@ class RideController extends Controller
     public function bookRide(Request $request) {
         $ride = new Ride;
         $input = $request->all();
-        foreach ($request as $key => $value) {
+        foreach ($input as $key => $value) {
             $ride[$key] = $input[$key];
         }
         $security = Crypt::encrypt($input['kid_id'].$input['start_time']);

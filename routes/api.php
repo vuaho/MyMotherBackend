@@ -17,19 +17,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('auth','UserController@login');
 
-Route::get('user/{id}','UserController@getUser');
+    Route::post('auth',['middleware' => 'cors', 'UserController@login']);
 
-Route::get('users','UserController@getUsers');
+    Route::get('user/{id}','UserController@getUser');
 
-Route::post('user/{id}','UserController@editUser');
+    Route::get('users',['middleware' => 'cors', 'UserController@getUser']);
 
-Route::post('book','RideController@book');
+    Route::post('user/{id}','UserController@editUser');
 
-Route::get('rides/{id}', 'RideController@listRideOfUser');
+    Route::post('book','RideController@bookRide');
 
-Route::get('ride/{id}', 'RideController@getRide');
+    Route::get('rides/{id}', 'RideController@listRideOfUser');
 
-Route::post('updateLocation','RideController@updateLocation');
+    Route::get('ride/{id}', 'RideController@getRide');
+
+    Route::post('updateLocation','RideController@updateLocation');
+
 
